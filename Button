@@ -1,0 +1,42 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ButtonPanel extends JPanel implements ActionListener {
+	private JButton ok, cancel;
+	private JLabel text;
+
+	public ButtonPanel() {
+		ok = new JButton("Ok");
+		ok.setFont(new Font("Arial", Font.BOLD, 12));
+		ok.setBackground(Color.YELLOW);
+		cancel = new JButton("Cancel");
+		text = new JLabel("Apasa un buton");
+		add(ok);
+		add(cancel);
+		add(text);
+		ok.addActionListener(this);
+		cancel.addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		text.setText(e.getActionCommand());
+
+	}
+}
+
+class ButtonDemo extends JFrame {
+	public ButtonDemo() {
+		super("Button");
+
+	}
+
+	public static void main(String[] args) {
+		ButtonDemo app = new ButtonDemo();
+		ButtonPanel bp = new ButtonPanel();
+		app.add(bp);
+		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		app.pack();
+		app.setVisible(true);
+	}
+}
